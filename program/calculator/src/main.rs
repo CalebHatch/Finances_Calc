@@ -1,5 +1,6 @@
 #![allow(unused)]
 
+use std::collections::HashMap;
 use std::io;
 use std::fs::File;
 use std::io::{Write, Read, BufReader, BufRead, ErrorKind};
@@ -37,6 +38,9 @@ fn main() {
             .expect("Didn't receive input");
 
         let groceries_int = groceries.trim().parse::<i32>().unwrap();
+
+        let mut expenses = HashMap::new();
+        expenses.insert(rent_int, groceries_int);
 
         println!("Total expenses: {}", get_expenses(rent_int, groceries_int));
 
