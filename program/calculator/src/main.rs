@@ -11,6 +11,10 @@ fn get_expenses(rent: i32, groceries: i32, restaurants: i32, other: i32) -> i32{
     return rent + groceries + restaurants + other
 }
 
+fn get_yearly_income(monthly_income: i32) -> i32{
+    return monthly_income * 12
+}
+
 fn main() {
     let mut x: bool = true;
 
@@ -75,6 +79,12 @@ fn main() {
 
         // Get total expenses with savings
         let final_expenses = (total_expenses + savings_amount_int);
+
+        // Calculate yearly income
+        let yearly_income = get_yearly_income(monthly_int);
+
+        // Print yearly income
+        println!("Your yearly income (before taxes) is: {}", yearly_income);
 
         // Print total expenses
         println!("Total expenses: {}", final_expenses);  
