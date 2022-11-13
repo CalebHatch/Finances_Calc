@@ -24,21 +24,25 @@ fn main() {
 
         println!("Your monthly income is: {}", monthly_income.trim_end());
 
+        let monthly_int = monthly_income.trim().parse::<i32>().unwrap();
+
+        // Get rent amount
         println!("How much do you spend on rent?");
         let mut rent = String::new();
         io::stdin()
             .read_line(&mut rent)
             .expect("Didn't receive input");
 
-        let rent_int = rent.trim().parse::<i32>().unwrap();
+        let rent_int = rent.trim().parse::<i32>().unwrap();  // Change rent input to int
 
+        // Get groceries amount
         println!("How much do you spend on groceries per month?");
         let mut groceries = String::new();
         io::stdin()
             .read_line(&mut groceries)
             .expect("Didn't receive input");
 
-        let groceries_int = groceries.trim().parse::<i32>().unwrap();
+        let groceries_int = groceries.trim().parse::<i32>().unwrap();  // Change groceries input to int
 
         println!("How much do you spend on eating out per month?");
         let mut restaurants = String::new();
@@ -47,6 +51,25 @@ fn main() {
             .expect("Didn't receive input");
 
         let rest_int = restaurants.trim().parse::<i32>().unwrap();
+
+        // Get percentage
+        println!("What percentage of your total monthly income do you want to save? (Only input percentage number without sign)");
+        let mut savings_amount = String::new();
+        io::stdin()
+            .read_line(&mut savings_amount)
+            .expect("Didn't receive input");
+
+        let savings_int = savings_amount.trim().parse::<i32>().unwrap();
+        let savings_amount_int = (monthly_int / savings_int);  // Get user percentage out of monthly income
+
+        // Get total expenses
+        let total_expenses = get_expenses(rent_int, groceries_int, rest_int);
+
+        // Get total expenses with savings
+        let final_expenses = (total_expenses + savings_amount_int);
+
+        // Print total expenses
+        println!("Total expenses: {}", final_expenses);  
 
         // Create HashMaps
         let mut rent_map = HashMap::new();
@@ -58,9 +81,7 @@ fn main() {
         let mut rest_map = HashMap::new();
         rest_map.insert("Eating Out Total", rest_int);
 
-        // Print total expenses
-        println!("Total expenses: {}", get_expenses(rent_int, groceries_int, rest_int));  
-
+        // Ask user if they want to redo
         println!("Would you like to redo? (y/n)");
         let mut user_redo = String::new();
         io::stdin()
@@ -70,10 +91,10 @@ fn main() {
         let mut user_redo = user_redo.trim();
         
         if user_redo == "y"{
-            x = true;
+            x = true;  // Keeps letting while loop be true
         }
         else {
-            x = false;
+            x = false;  // Makes while loop false
         }
 
     }
