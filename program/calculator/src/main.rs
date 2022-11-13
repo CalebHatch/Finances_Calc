@@ -20,7 +20,7 @@ fn main() {
 
     while x == true {
 
-        println!("What is your monthly income?");
+        println!("What is your monthly income (after taxes)");
         let mut monthly_income = String::new();
         io::stdin()
             .read_line(&mut monthly_income)
@@ -84,7 +84,7 @@ fn main() {
         let yearly_income = get_yearly_income(monthly_int);
 
         // Print yearly income
-        println!("Your yearly income (before taxes) is: {}", yearly_income);
+        println!("Your yearly income (after taxes) is: {}", yearly_income);
 
         // Print total expenses
         println!("Total expenses: {}", final_expenses);  
