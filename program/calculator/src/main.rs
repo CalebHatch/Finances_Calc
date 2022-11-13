@@ -7,8 +7,8 @@ use std::fs::File;
 use std::io::{Write, Read, BufReader, BufRead, ErrorKind};
 use std::cmp::Ordering;
 
-fn get_expenses(rent: i32, groceries: i32, restaurants: i32) -> i32{
-    return rent + groceries + restaurants
+fn get_expenses(rent: i32, groceries: i32, restaurants: i32, other: i32) -> i32{
+    return rent + groceries + restaurants + other
 }
 
 fn main() {
@@ -52,6 +52,14 @@ fn main() {
 
         let rest_int = restaurants.trim().parse::<i32>().unwrap();
 
+        println!("How much do you spend on other things per month?");
+        let mut other = String::new();
+        io::stdin()
+            .read_line(&mut other)
+            .expect("Didn't receive input");
+
+        let other_int = other.trim().parse::<i32>().unwrap();
+
         // Get percentage
         println!("What percentage of your total monthly income do you want to save? (Only input percentage number without sign)");
         let mut savings_amount = String::new();
@@ -63,13 +71,19 @@ fn main() {
         let savings_amount_int = (monthly_int / savings_int);  // Get savings percentage out of monthly income
 
         // Get total expenses
-        let total_expenses = get_expenses(rent_int, groceries_int, rest_int);
+        let total_expenses = get_expenses(rent_int, groceries_int, rest_int, other_int);
 
         // Get total expenses with savings
         let final_expenses = (total_expenses + savings_amount_int);
 
         // Print total expenses
         println!("Total expenses: {}", final_expenses);  
+
+        if final_expenses <= monthly_int{
+            println!("Your total expenses amount is less than or equal to your income. Great job!")
+        } else if final_expenses > monthly_int{
+            println!("Your total expenses are greater than your monthly income. Try to lower your expenses or increase your income.")
+        }
 
         // Create HashMaps
         let mut rent_map = HashMap::new();
