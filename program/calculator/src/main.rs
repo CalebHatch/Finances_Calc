@@ -48,13 +48,18 @@ fn main() {
 
         let rest_int = restaurants.trim().parse::<i32>().unwrap();
 
+        // Create HashMaps
         let mut rent_map = HashMap::new();
         rent_map.insert("Rent Total", rent_int);
 
         let mut groceries_map = HashMap::new();
         groceries_map.insert("Groceries Total", groceries_int);
 
-        println!("Total expenses: {}", get_expenses(rent_int, groceries_int, rest_int));
+        let mut rest_map = HashMap::new();
+        rest_map.insert("Eating Out Total", rest_int);
+
+        // Print total expenses
+        println!("Total expenses: {}", get_expenses(rent_int, groceries_int, rest_int));  
 
         println!("Would you like to redo? (y/n)");
         let mut user_redo = String::new();
