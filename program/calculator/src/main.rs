@@ -60,7 +60,7 @@ fn main() {
             .expect("Didn't receive input");
 
         let savings_int = savings_amount.trim().parse::<i32>().unwrap();
-        let savings_amount_int = (monthly_int / savings_int);  // Get user percentage out of monthly income
+        let savings_amount_int = (monthly_int / savings_int);  // Get savings percentage out of monthly income
 
         // Get total expenses
         let total_expenses = get_expenses(rent_int, groceries_int, rest_int);
@@ -80,6 +80,9 @@ fn main() {
 
         let mut rest_map = HashMap::new();
         rest_map.insert("Eating Out Total", rest_int);
+
+        let mut savings_map = HashMap::new();
+        savings_map.insert("Savings Total", savings_amount_int);
 
         // Ask user if they want to redo
         println!("Would you like to redo? (y/n)");
