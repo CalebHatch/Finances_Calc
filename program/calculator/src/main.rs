@@ -1,3 +1,6 @@
+// Finances Calculator
+// by Caleb Hatch
+
 #![allow(unused)]
 
 use std::collections::HashMap;
