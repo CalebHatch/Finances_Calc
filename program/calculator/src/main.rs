@@ -20,18 +20,19 @@ fn main() {
 
     while x == true {
 
-        println!("What is your monthly income (after taxes)");
+        println!("What is your monthly income (after taxes)?");
         let mut monthly_income = String::new();
         io::stdin()
             .read_line(&mut monthly_income)
             .expect("Didn't receive input");
 
         println!("Your monthly income is: {}", monthly_income.trim_end());
+        println!();
 
         let monthly_int = monthly_income.trim().parse::<i32>().unwrap();
 
         // Get rent amount
-        println!("How much do you spend on rent?");
+        println!("How much do you spend on rent/mortgage per month (including utilities)?");
         let mut rent = String::new();
         io::stdin()
             .read_line(&mut rent)
@@ -39,12 +40,16 @@ fn main() {
 
         let rent_int = rent.trim().parse::<i32>().unwrap();  // Change rent input to int
 
+        println!();
+
         // Get groceries amount
         println!("How much do you spend on groceries per month?");
         let mut groceries = String::new();
         io::stdin()
             .read_line(&mut groceries)
             .expect("Didn't receive input");
+
+        println!();
 
         let groceries_int = groceries.trim().parse::<i32>().unwrap();  // Change groceries input to int
 
@@ -54,6 +59,8 @@ fn main() {
             .read_line(&mut restaurants)
             .expect("Didn't receive input");
 
+        println!();
+
         let rest_int = restaurants.trim().parse::<i32>().unwrap();
 
         println!("How much do you spend on other things per month?");
@@ -61,6 +68,8 @@ fn main() {
         io::stdin()
             .read_line(&mut other)
             .expect("Didn't receive input");
+
+        println!();
 
         let other_int = other.trim().parse::<i32>().unwrap();
 
@@ -70,6 +79,8 @@ fn main() {
         io::stdin()
             .read_line(&mut savings_amount)
             .expect("Didn't receive input");
+
+        println!();
 
         let savings_int = savings_amount.trim().parse::<i32>().unwrap();
         let savings_amount_int = (monthly_int / savings_int);  // Get savings percentage out of monthly income
@@ -88,6 +99,8 @@ fn main() {
 
         // Print total expenses
         println!("Total expenses: {}", final_expenses);  
+
+        println!();
 
         if final_expenses <= monthly_int{
             println!("Your total expenses amount is less than or equal to your income. Great job!")
@@ -108,6 +121,9 @@ fn main() {
         let mut savings_map = HashMap::new();
         savings_map.insert("Savings Total", savings_amount_int);
 
+        let mut other_map = HashMap::new();
+        other_map.insert("Other Expenses Total", other_int);
+
         // Ask user if they want to redo
         println!("Would you like to redo? (y/n)");
         let mut user_redo = String::new();
@@ -123,6 +139,8 @@ fn main() {
         else {
             x = false;  // Makes while loop false
         }
+
+        println!();
 
     }
     
