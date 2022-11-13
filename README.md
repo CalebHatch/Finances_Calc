@@ -1,6 +1,6 @@
 # Overview
 
-This software will take in all of your monthly expenses (plus a custom amount to savings) and give you a financial evalulation based on that.
+This software will take in all of your monthly income (after taxes) and monthly expenses (plus a custom amount to savings) and give you a financial evalulation based on that.
 
 I didn't know Rust at all before writing this software, so this software was primarily made to help me learn the basics of rust.
 
