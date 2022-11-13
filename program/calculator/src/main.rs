@@ -110,12 +110,31 @@ fn main() {
 
         // Create HashMap and add values
         let mut expenses_map = HashMap::new();
-        
-        expenses_map.insert("Rent Total", rent_int);
-        expenses_map.insert("Groceries Total", groceries_int);
-        expenses_map.insert("Eating Out Total", rest_int);
-        expenses_map.insert("Savings Total", savings_amount_int);
-        expenses_map.insert("Other Expenses Total", other_int);
+
+        expenses_map.insert("Rent Total", rent);
+        expenses_map.insert("Groceries Total", groceries);
+        expenses_map.insert("Eating Out Total", restaurants);
+        expenses_map.insert("Savings Total", savings_amount);
+        expenses_map.insert("Other Expenses Total", other);
+
+        // Ask user if they want to redo
+        println!("Would you like to make a list of your expenses? (y/n)");
+        let mut user_map = String::new();
+        io::stdin()
+            .read_line(&mut user_map)
+            .expect("Invalid input");
+
+        let mut user_map = user_map.trim();
+
+        if user_map == "y"{
+            println!();
+            for(k, v) in expenses_map.iter(){
+                println!("{} = {} ", k, v);
+            }
+        }
+        else {
+            println!();
+        }
 
         // Ask user if they want to redo
         println!("Would you like to redo? (y/n)");
