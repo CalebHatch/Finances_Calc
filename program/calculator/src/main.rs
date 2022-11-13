@@ -108,21 +108,14 @@ fn main() {
             println!("Your total expenses are greater than your monthly income. Try to lower your expenses or increase your income.")
         }
 
-        // Create HashMaps
-        let mut rent_map = HashMap::new();
-        rent_map.insert("Rent Total", rent_int);
-
-        let mut groceries_map = HashMap::new();
-        groceries_map.insert("Groceries Total", groceries_int);
-
-        let mut rest_map = HashMap::new();
-        rest_map.insert("Eating Out Total", rest_int);
-
-        let mut savings_map = HashMap::new();
-        savings_map.insert("Savings Total", savings_amount_int);
-
-        let mut other_map = HashMap::new();
-        other_map.insert("Other Expenses Total", other_int);
+        // Create HashMap and add values
+        let mut expenses_map = HashMap::new();
+        
+        expenses_map.insert("Rent Total", rent_int);
+        expenses_map.insert("Groceries Total", groceries_int);
+        expenses_map.insert("Eating Out Total", rest_int);
+        expenses_map.insert("Savings Total", savings_amount_int);
+        expenses_map.insert("Other Expenses Total", other_int);
 
         // Ask user if they want to redo
         println!("Would you like to redo? (y/n)");
