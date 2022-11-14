@@ -4,7 +4,7 @@ This software will take in all of your monthly income (after taxes) and monthly 
 
 I didn't know Rust at all before writing this software, so this software was primarily made to help me learn the basics of rust.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/WW64PeV-TyM)
 
 # Development Environment
 
